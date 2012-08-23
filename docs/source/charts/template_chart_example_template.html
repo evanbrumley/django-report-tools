@@ -1,0 +1,16 @@
+<!-- myapp/template_chart.html -->
+
+<table id="{{ chart_id }}" border="1">
+    <thead>
+        <th>Pony Type</th>
+        <th>Latin Name</th>
+    </thead>
+    <tbody>
+        {% for pony_type, latin_name in pony_types %}
+            <tr>
+                <td>{{ pony_type }}</td>
+                <td>{{ latin_name }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>

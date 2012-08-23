@@ -1,0 +1,5 @@
+{% extends "report_tools/renderers/googlecharts/chart.html" %}
+
+{% block chart_init %}
+	var chart = new google.visualization.ColumnChart(document.getElementById('{{ chart_id }}'));
+{% endblock %}

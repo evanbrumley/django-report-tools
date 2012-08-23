@@ -1,0 +1,52 @@
+<div id="{{ chart_id }}"></div>
+
+<script type="text/javascript">
+    
+    // Load the Visualization API and the core chart package.
+    if (typeof(window.loadChartAPI) == "undefined" || window.loadChartAPI == true) {
+        google.load('visualization', '1.0', {'packages':['corechart']});
+    }
+
+    window.chart_{{ chart_id }}_options = {{ options }};
+    window.chart_{{ chart_id }}_rawdata = {{ data_json }};
+    window.chart_{{ chart_id }}_data = null;
+      
+    // Callback that creates and populates a data table, 
+    // instantiates the pie chart, passes in the data and
+    // draws it.
+    function drawChart_{{ chart_id }}() {
+        // If a global variable has been set to disable chart rendering, don't render
+        if (typeof(window.drawCharts) != "undefined" && window.drawCharts == false) {
+            return;
+        }
+
+        if (window.chart_{{ chart_id }}_data == null) {
+            window.chart_{{ chart_id }}_data = new google.visualization.DataTable({{ data_json }});
+        }
+        
+        var data = window.chart_{{ chart_id }}_data;
+        var options = window.chart_{{ chart_id }}_options;
+    
+        // Instantiate and draw our chart, passing in some options.
+        {% block chart_init %}
+            var chart = new google.visualization.PieChart(document.getElementById('{{ chart_id }}'));
+        {% endblock %}
+
+        chart.draw(data, options);
+
+        window.chart_{{ chart_id }} = chart;
+    }
+
+    function setData_{{ chart_id }}(data){
+        window.chart_{{ chart_id }}_data = new google.visualization.DataTable(JSON.stringify(eval("(" + data + ")")));
+
+        var chart = window.chart_{{ chart_id }};
+        var data = window.chart_{{ chart_id }}_data;
+        var options = window.chart_{{ chart_id }}_options;
+
+        chart.draw(data, options);
+    }
+
+    // Set a callback to run when the Google Visualization API is loaded.
+    google.setOnLoadCallback(drawChart_{{ chart_id }});
+</script>
