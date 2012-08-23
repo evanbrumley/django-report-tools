@@ -41,7 +41,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'report-tools'
+project = u'django-report-tools'
 copyright = u''
 
 # The version info for the project you're documenting, acts as replacement for

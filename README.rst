@@ -52,7 +52,7 @@ using the Google Visualization Toolkit.
 
             return data
 
-Read on in the documentation (coming soon) for a full explanation and lots more examples.
+Read on in the documentation for a full explanation and lots more examples.
 
 
 Links
@@ -60,7 +60,7 @@ Links
 
 Project Home: http://github.com/evanbrumley/django-report-tools
 
-Documentation: coming soon..
+Documentation: http://django-report-tools.readthedocs.org
 
 
 Installation

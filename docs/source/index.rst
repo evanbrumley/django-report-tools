@@ -3,8 +3,8 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Report Tools
-============
+Django Report Tools
+===================
 
 Report tools aims to take the pain out of putting charts, graphs and tables into
 your Django projects. It lets you do the following:
