@@ -47,6 +47,17 @@ class ChartDataRow(object):
     def __getitem__(self, index):
         return self.cells[index]
 
+    def delete_cell(self, cell_index):
+        try:
+            self.cells.pop(cell_index)
+        except IndexError:
+            pass
+
+        return
+
+    def to_list(self):
+        return [cell.data for cell in self.cells]
+
 
 class ChartDataCell(object):
     def __init__(self, data, metadata=None):
@@ -108,3 +119,25 @@ class ChartData(object):
                 metadata = {}
             
             self.add_row(data, metadata)
+
+    def delete_column(self, column_index):
+        try:
+            self.columns.pop(column_index)
+        except IndexError:
+            pass
+
+        for row in self.rows:
+            try:
+                row.delete_cell(column_index)
+            except IndexError:
+                pass
+
+    def to_list(self):
+        return [row.to_list() for row in self.get_rows()]
+
+    def to_list_transposed(self):
+        """
+        Returns the list version of the chart data flipped on the main diagonal
+        """
+        original = self.to_list()
+        return zip(*original)

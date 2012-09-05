@@ -2,9 +2,21 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <title>WSP Reports - Examples</title>
+        <title>Report Tools - Examples</title>
 
+        <!-- jqPlot javascript -->
+        <script type="text/javascript" src="{{ STATIC_URL }}jqplot/jquery.min.js"></script>
+        <script type="text/javascript" src="{{ STATIC_URL }}jqplot/jquery.jqplot.min.js"></script>
+        <script type="text/javascript" src="{{ STATIC_URL }}jqplot/plugins/jqplot.pieRenderer.js"></script>
+        <script type="text/javascript" src="{{ STATIC_URL }}jqplot/plugins/jqplot.categoryAxisRenderer.js"></script>
+        <script type="text/javascript" src="{{ STATIC_URL }}jqplot/plugins/jqplot.barRenderer.js"></script>
+        <!--[if lt IE 9]><script language="javascript" type="text/javascript" src="excanvas.js"></script><![endif]-->
+
+        <!-- Google charts javascript -->
         <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+
+        <!-- jqPlot stylesheet -->
+        <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}jqplot/jquery.jqplot.css" />
     </head>
 
     <body>

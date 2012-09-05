@@ -1,29 +1,56 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1>Report Tools Example Charts</h1>
+    <h1>Google Charts</h1>
 
-    <h2>{{ report.pie_chart.title }}</h2>
-    {{ report.pie_chart }}
+    <h2>{{ google_charts_report.pie_chart.title }}</h2>
+    {{ google_charts_report.pie_chart }}
 
-    <h2>{{ report.column_chart.title }}</h2>
-    {{ report.column_chart }}
+    <h2>{{ google_charts_report.column_chart.title }}</h2>
+    {{ google_charts_report.column_chart }}
 
-    <h2>{{ report.multiseries_column_chart.title }}</h2>
-    {{ report.multiseries_column_chart }}
+    <h2>{{ google_charts_report.multiseries_column_chart.title }}</h2>
+    {{ google_charts_report.multiseries_column_chart }}
 
-    <h2>{{ report.bar_chart.title }}</h2>
-    {{ report.bar_chart }}
+    <h2>{{ google_charts_report.bar_chart.title }}</h2>
+    {{ google_charts_report.bar_chart }}
 
-    <h2>{{ report.multiseries_bar_chart.title }}</h2>
-    {{ report.multiseries_bar_chart }}
+    <h2>{{ google_charts_report.multiseries_bar_chart.title }}</h2>
+    {{ google_charts_report.multiseries_bar_chart }}
 
-    <h2>{{ report.line_chart.title }}</h2>
-    {{ report.line_chart }}
+    <h2>{{ google_charts_report.line_chart.title }}</h2>
+    {{ google_charts_report.line_chart }}
 
-    <h2>{{ report.multiseries_line_chart.title }}</h2>
-    {{ report.multiseries_line_chart }}
+    <h2>{{ google_charts_report.multiseries_line_chart.title }}</h2>
+    {{ google_charts_report.multiseries_line_chart }}
 
-    <h2>{{ report.template_chart.title }}</h2>
-    {{ report.template_chart }}
+    <h2>{{ google_charts_report.template_chart.title }}</h2>
+    {{ google_charts_report.template_chart }}
+
+
+    <h1>jqPlot Charts</h1>
+
+    <h2>{{ jqplot_report.pie_chart.title }}</h2>
+    {{ jqplot_report.pie_chart }}
+
+    <h2>{{ jqplot_report.column_chart.title }}</h2>
+    {{ jqplot_report.column_chart }}
+
+    <h2>{{ jqplot_report.multiseries_column_chart.title }}</h2>
+    {{ jqplot_report.multiseries_column_chart }}
+
+    <h2>{{ jqplot_report.bar_chart.title }}</h2>
+    {{ jqplot_report.bar_chart }}
+
+    <h2>{{ jqplot_report.multiseries_bar_chart.title }}</h2>
+    {{ jqplot_report.multiseries_bar_chart }}
+
+    <h2>{{ jqplot_report.line_chart.title }}</h2>
+    {{ jqplot_report.line_chart }}
+
+    <h2>{{ jqplot_report.multiseries_line_chart.title }}</h2>
+    {{ jqplot_report.multiseries_line_chart }}
+
+    <h2>{{ jqplot_report.template_chart.title }}</h2>
+    {{ jqplot_report.template_chart }}
 {% endblock %}

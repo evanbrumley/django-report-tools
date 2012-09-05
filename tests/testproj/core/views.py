@@ -1,15 +1,29 @@
 from django.shortcuts import render
 from report_tools.views import ReportView
 from report_tools import api
-from reports import MyReport
+from reports import GoogleChartsReport, JQPlotReport
 
+
+
+def home(request):
+    template = "core/index.html"
+
+    google_charts_report = GoogleChartsReport(prefix='gchart')
+    jqplot_report = JQPlotReport(prefix='jqplot')
+
+    context = {
+        'google_charts_report': google_charts_report,
+        'jqplot_report': jqplot_report,
+    }
+
+    return render(request, template, context)
 
 
 class MyReportView(ReportView):
     api_key = 'my_report'
 
     def get_report(self, request):
-        return MyReport()
+        return GoogleChartsReport()
 
     def get(self, request):
         template = "core/index.html"

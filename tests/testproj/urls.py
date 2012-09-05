@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.conf.urls import patterns, include, url
 from testproj.core.views import MyReportView
 
@@ -16,6 +17,11 @@ urlpatterns = patterns('',
     # Uncomment the next line to enable the admin:
     # url(r'^admin/', include(admin.site.urls)),
 
-    url(r'^$', MyReportView.as_view(), name='index'),
+    url(r'^$', 'testproj.core.views.home', name='index'),
+    url(r'^class_based/$', MyReportView.as_view(), name='class_based'),
     url(r'^api/', include('report_tools.urls')),
 )
+
+
+if settings.DEBUG:
+    urlpatterns += patterns('django.contrib.staticfiles.views', url(r'^static/(?P<path>.*)$', 'serve'),)

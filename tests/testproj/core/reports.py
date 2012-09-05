@@ -1,13 +1,12 @@
 from report_tools.reports import Report
 from report_tools.chart_data import ChartData
 from report_tools.renderers.googlecharts import GoogleChartsRenderer
+from report_tools.renderers.jqplot import JQPlotRenderer
 from report_tools import charts
 
 
 
 class MyReport(Report):
-    renderer = GoogleChartsRenderer
-
     pie_chart = charts.PieChart(title="Pony Populations", width="500")
     template_chart = charts.TemplateChart(title="Pony Types", template="core/template_chart.html")
     column_chart = charts.ColumnChart(title="Pony Populations", width="500")
@@ -119,3 +118,16 @@ class MyReport(Report):
         }
 
         return template_context
+
+
+class GoogleChartsReport(MyReport):
+    renderer = GoogleChartsRenderer
+
+
+class JQPlotReport(MyReport):
+    renderer = JQPlotRenderer
+
+    pie_chart = charts.PieChart(
+        title="Pony Populations",
+        width="500",
+    )

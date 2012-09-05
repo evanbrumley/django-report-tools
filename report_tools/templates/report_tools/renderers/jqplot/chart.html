@@ -1,0 +1,15 @@
+<div id="{{ chart_id }}" style="height: {{ height }}px; width: {{ width }}px;"></div>
+
+<script type="text/javascript">
+    function drawChart_{{ chart_id }}() {
+        var data = {{ data|safe }};
+        var options = {{ options|safe }};
+
+        $.jqplot('{{ chart_id }}', data, options);
+    }
+
+    $(document).ready(function(){
+        $.jqplot.config.enablePlugins = true;
+        drawChart_{{ chart_id }}();
+    });
+</script>
