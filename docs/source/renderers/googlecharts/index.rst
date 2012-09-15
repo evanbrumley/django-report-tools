@@ -1,16 +1,16 @@
-Google Charts
-=============
+Google Chart Tools
+==================
 
 .. class:: report_tools.renderers.googlecharts.GoogleChartsRenderer
 
-The google charts renderer uses 
+The google charts tools renderer uses 
 `Google Chart Tools <https://developers.google.com/chart/interactive/docs/index>`_ 
 to render the built-in chart types.
 
 Chart Support
 -------------
 
-The google chart renderer supports all the built-in chart types described
+The google chart tools renderer supports all the built-in chart types described
 in the :doc:`chart documentation </charts/index>`. This includes:
 
 *   Pie Charts

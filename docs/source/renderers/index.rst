@@ -1,8 +1,8 @@
 Chart Renderers
 ===============
 
-Chart renderers control the way reports display on your site. Currently,
-the only included renderer is for Google Charts, but more are on the way,
+Chart renderers control the way reports display on your site. There are currently
+two bundled renderers - Google Chart Tools and jqPlot. More are on the way,
 and it's easy to write one for your own favourite charting package.
 
 Included Renderers
@@ -12,6 +12,7 @@ Included Renderers
    :maxdepth: 1
 
    googlecharts/index
+   jqplot/index
 
 Basic Usage
 -----------

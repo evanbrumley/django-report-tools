@@ -84,7 +84,7 @@ class BaseReport(StrAndUnicode):
             chart = self.charts[name]
         except KeyError:
             raise KeyError('Key %r not found in Report' % name)
-            
+
         data = self._get_chart_data(name)
         return BoundChart(self, chart, name, data, self.prefix)
     
@@ -100,7 +100,7 @@ class BaseReport(StrAndUnicode):
             self.data[name] = data
         else:
             data = None
-            
+        
         return data
     
     def setup(self, request):

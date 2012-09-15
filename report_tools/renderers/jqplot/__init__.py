@@ -10,6 +10,8 @@ DEFAULT_HEIGHT = 300
 DEFAULT_WIDTH = 400
 
 
+RAW_FIELDS = ['formatter', 'renderer', 'markerRenderer']
+
 class JSRaw(int):
     """
     Hack to allow including raw Javascript code in simplejson.dumps
@@ -20,12 +22,15 @@ class JSRaw(int):
     """
     def __new__(self, string):
         instance = int.__new__(self, 0)
-        instance.string= string
+        instance.string = string
         return instance
+
     def __repr__(self):
         return self.string
+
     def __unicode__(self):
         return self.string
+
     def __str__(self):
         return self.string
 
@@ -40,12 +45,18 @@ class JQPlotRenderer(object):
         renderer_options_copy = deepcopy(renderer_options)
 
         for key, val in renderer_options.iteritems():
-            if key in ('renderer', 'formatter'):
+            if key in RAW_FIELDS:
                 renderer_options_copy[key] = JSRaw(val)
             elif isinstance(val, dict):
                 renderer_options_copy[key] = cls.process_renderer_options(val)
 
         return renderer_options_copy
+
+    @classmethod
+    def render_jqplotchart(cls, chart_id, options, data, renderer_options):
+        base_renderer_options = {}
+
+        return cls.base_render(chart_id, options, data, base_renderer_options, renderer_options)
 
     @classmethod
     def render_piechart(cls, chart_id, options, data, renderer_options):

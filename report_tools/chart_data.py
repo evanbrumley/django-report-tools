@@ -81,7 +81,7 @@ class ChartData(object):
     def get_rows(self):
         return self.rows
     
-    def add_column(self, name, metadata=None):
+    def add_column(self, name="", metadata=None):
         if self.rows:
             raise ChartDataError("Cannot add columns after data has been entered")
         
@@ -100,11 +100,23 @@ class ChartData(object):
             self.add_column(name, metadata)
     
     def add_row(self, data, metadata=None):
+        # Raise an error if the row is too short
         if len(data) < len(self.columns):
             raise ChartDataError("Not enough data points (%s) for the given number of columns (%s)" % (len(data), len(self.columns)))
 
+        # If the row is too short..
         if len(data) > len(self.columns):
-            raise ChartDataError("Too many data points (%s) for the given number of columns (%s)" % (len(data), len(self.columns)))
+            # Raise an error if they've defined columns
+            if self.columns:
+                raise ChartDataError("Too many data points (%s) for the given number of columns (%s)" % (len(data), len(self.columns)))
+
+            # If they haven't defined any columns, assume that they don't need them, but add in some blank
+            # ones to keep things tidy.
+            else:
+                num_extra_columns_required = len(data) - len(self.columns)
+                
+                for i in range(num_extra_columns_required):
+                    self.add_column()
         
         row = ChartDataRow(data, metadata)
         self.rows.append(row)

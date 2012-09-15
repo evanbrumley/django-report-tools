@@ -7,11 +7,12 @@ Django Report Tools
 ===================
 
 Report tools aims to take the pain out of putting charts, graphs and tables into
-your Django projects. It lets you do the following:
+your Django projects. Feature include:
 
-* Define your reports using the same syntax as Django forms and models
-* Use built-in 'renderers' to avoid the hassle of dealing with various
-  charting technologies (currently only the Google Visualization Toolkit is supported)
+* Define reports and charts the same way you would Django forms/models and fields
+* Use 'renderers' to avoid the hassle of dealing with various
+  charting technologies
+* Use bundled renderers for Google Chart Tools and jqPlot
 * Enter chart data in a standardised format
 * Build a simple API, allowing for the creation of chart exports or a 'save to dashboard'
   feature.
