@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# wsp-reports documentation build configuration file, created by
+# django-report-tools documentation build configuration file, created by
 # sphinx-quickstart on Thu Jan 12 14:58:42 2012.
 #
 # This file is execfile()d with the current directory set to its containing dir.
@@ -165,7 +165,7 @@ html_static_path = []
 #html_file_suffix = None
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'wsp-reportsdoc'
+htmlhelp_basename = 'django-report-tools-doc'
 
 
 # -- Options for LaTeX output --------------------------------------------------
@@ -179,8 +179,8 @@ htmlhelp_basename = 'wsp-reportsdoc'
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title, author, documentclass [howto/manual]).
 latex_documents = [
-  ('index', 'wsp-reports.tex', u'wsp-reports Documentation',
-   u'WSP Digital', 'manual'),
+  ('index', 'django-report-tools.tex', u'django-report-tools Documentation',
+   u'Evan Brumley', 'manual'),
 ]
 
 # The name of an image file (relative to this directory) to place at the top of

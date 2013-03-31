@@ -2,13 +2,47 @@ from report_tools.renderers import ChartRenderer, ChartRendererError
 from report_tools.renderers.googlecharts.gviz_api import gviz_api
 from django.template.loader import render_to_string
 from django.utils.safestring import mark_safe
-from django.utils import simplejson
 from django.utils.encoding import force_unicode
 
+try:
+  import json
+except ImportError:
+  import simplejson as json
 
 
 DEFAULT_WIDTH = 400
 DEFAULT_HEIGHT = 300
+
+
+class JSONEncoderForHTML(json.JSONEncoder):
+    """
+    An encoder that produces JSON safe to embed in HTML.
+
+    To embed JSON content in, say, a script tag on a web page, the
+    characters &, < and > should be escaped. They cannot be escaped
+    with the usual entities (e.g. &amp;) because they are not expanded
+    within <script> tags.
+
+    Originally from the simplejson project:
+    https://github.com/simplejson/simplejson
+    """
+
+    def encode(self, o):
+        # Override JSONEncoder.encode because it has hacks for
+        # performance that make things more complicated.
+        chunks = self.iterencode(o, True)
+        if self.ensure_ascii:
+            return ''.join(chunks)
+        else:
+            return u''.join(chunks)
+
+    def iterencode(self, o, _one_shot=False):
+        chunks = super(JSONEncoderForHTML, self).iterencode(o, _one_shot)
+        for chunk in chunks:
+            chunk = chunk.replace('&', '\\u0026')
+            chunk = chunk.replace('<', '\\u003c')
+            chunk = chunk.replace('>', '\\u003e')
+            yield chunk
 
 
 class GoogleChartsRenderer(ChartRenderer):
@@ -47,7 +81,7 @@ class GoogleChartsRenderer(ChartRenderer):
         context = {
             'chart_id': chart_id,
             'data_json': data_json,
-            'options': mark_safe(simplejson.dumps(gchart_options)),
+            'options': mark_safe(json.dumps(gchart_options, cls=JSONEncoderForHTML)),
         }
         
         html = render_to_string(template, context)
@@ -120,6 +154,5 @@ class GoogleChartsDataConverter(object):
         
         data_table = gviz_api.DataTable(description)
         data_table.LoadData(datatable_data)
-        
         
         return data_table.ToJSon(columns_order=columns_order)

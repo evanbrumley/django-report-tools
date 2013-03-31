@@ -1,10 +1,11 @@
+from copy import deepcopy
+
 from django.db import models
-from django.utils.copycompat import deepcopy
 from django.utils.datastructures import SortedDict
 from django.utils.encoding import StrAndUnicode
 from django.utils.safestring import mark_safe
 
-from charts import Chart
+from .charts import Chart
 
 __all__ = ('BaseReport', 'Report')
 

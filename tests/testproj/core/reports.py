@@ -16,6 +16,7 @@ class MyReport(Report):
     multiseries_bar_chart = charts.BarChart(title="Pony Populations by Country", width="500")
     line_chart = charts.LineChart(title="Blue Pony Population - 2009-2012", width="500")
     multiseries_line_chart = charts.LineChart(title="Pony Populations - 2009-2012", width="500")
+    naughty_pie_chart = charts.PieChart(title="Pony </script>Populations", width="500")
 
     def get_data_for_line_chart(self):
         data = ChartData()
@@ -103,6 +104,18 @@ class MyReport(Report):
 
         data.add_row(["Blue", 20])
         data.add_row(["Pink", 20])
+        data.add_row(["Magical", 1])
+
+        return data
+
+    def get_data_for_naughty_pie_chart(self):
+        data = ChartData()
+
+        data.add_column("Pony</script> &&&Type")
+        data.add_column("Population")
+
+        data.add_row(["Blue", 20])
+        data.add_row(["Pink</script>&&&", 20])
         data.add_row(["Magical", 1])
 
         return data

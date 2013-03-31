@@ -4,7 +4,7 @@ from distutils.core import setup
 setup(
     name = 'django-report-tools',
     description = 'Class-based reports for elegant data views.',
-    version = '0.1',
+    version = '0.2',
     author = 'Evan Brumley',
     author_email = 'evan.brumley@gmail.com',
     url = 'http://github.com/evanbrumley/django-report-tools',
