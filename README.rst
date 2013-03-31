@@ -17,6 +17,14 @@ Features
 * Build a simple API, allowing for the creation of chart exports or a 'save to dashboard' feature.
 
 
+Release Notes - 0.2
+-------------------
+
+* Updated for Django 1.5 compatibility
+* Fixed an XSS vector in the Google Charts renderer
+* Updated to the most recent GViz API
+
+
 A fully-functional example report
 -----------------
 
