@@ -80,4 +80,4 @@ To install django-report-tools simply use: ::
 
 Or alternatively: ::
 
-    $ easy_install requests
+    $ easy_install django-report-tools
