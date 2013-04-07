@@ -54,7 +54,7 @@ class DataTableJSONEncoder(json.JSONEncoder):
   def encode(self, o):
     # Override JSONEncoder.encode because it has hacks for
     # performance that make things more complicated.
-    chunks = self.iterencode(o, True)
+    chunks = self.iterencode(o)
     if self.ensure_ascii:
       return ''.join(chunks)
     else:
@@ -64,8 +64,8 @@ class DataTableJSONEncoder(json.JSONEncoder):
   # This code allows the datatable JSON to be safely rendered
   # into an html page without being screwed up by ampersands
   # and </script> tags
-  def iterencode(self, o, _one_shot=False):
-    chunks = super(DataTableJSONEncoder, self).iterencode(o, _one_shot)
+  def iterencode(self, o):
+    chunks = super(DataTableJSONEncoder, self).iterencode(o)
     for chunk in chunks:
       chunk = chunk.replace('&', '\\u0026')
       chunk = chunk.replace('<', '\\u003c')
