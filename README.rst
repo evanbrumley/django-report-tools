@@ -17,6 +17,13 @@ Features
 * Build a simple API, allowing for the creation of chart exports or a 'save to dashboard' feature.
 
 
+Release Notes - 0.2.1
+---------------------
+
+* Fixed a JSON encoding bug that broke Python 2.6 compatibility.
+* Added a tox.ini and setup.py test support so I can test and prevent these sorts of
+  bug in the future.
+
 Release Notes - 0.2
 -------------------
 
