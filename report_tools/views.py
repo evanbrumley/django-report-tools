@@ -2,8 +2,9 @@ from django.utils import simplejson
 from django.http import HttpResponse, Http404
 from django.views.generic import View
 from django.utils.decorators import classonlymethod
-from django.utils.functional import update_wrapper
 from django.utils.safestring import mark_safe
+
+import functools
 
 from report_tools.api import (ChartNotFoundError, report_api_registry,
     OVERRIDE_PARAMS__CHART_HEIGHT, OVERRIDE_PARAMS__CHART_WIDTH,
@@ -91,11 +92,11 @@ class ReportView(View):
             return self.api_dispatch(request, *args, **kwargs)
 
         # take name and docstring from class
-        update_wrapper(view, cls, updated=())
+        functools.update_wrapper(view, cls, updated=())
 
         # and possible attributes set by decorators
         # like csrf_exempt from dispatch
-        update_wrapper(view, cls.dispatch, assigned=())
+        functools.update_wrapper(view, cls.dispatch, assigned=())
         return view
     
     def dispatch(self, request, *args, **kwargs):
