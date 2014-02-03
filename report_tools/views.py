@@ -1,10 +1,17 @@
-from django.utils import simplejson
+import functools
+
+try:
+    import json
+except ImportError:
+    import simplejson as json
+
 from django.http import HttpResponse, Http404
 from django.views.generic import View
 from django.utils.decorators import classonlymethod
 from django.utils.safestring import mark_safe
 
-import functools
+
+
 
 from report_tools.api import (ChartNotFoundError, report_api_registry,
     OVERRIDE_PARAMS__CHART_HEIGHT, OVERRIDE_PARAMS__CHART_WIDTH,
@@ -70,7 +77,7 @@ class ReportView(View):
             'attrs': attrs,
         }
         
-        return HttpResponse(simplejson.dumps(return_data), mimetype='application/javascript')
+        return HttpResponse(json.dumps(return_data), mimetype='application/javascript')
 
     @classonlymethod
     def as_api_view(cls, **initkwargs):
