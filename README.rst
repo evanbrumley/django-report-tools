@@ -17,6 +17,13 @@ Features
 * Build a simple API, allowing for the creation of chart exports or a 'save to dashboard' feature.
 
 
+Release Notes - 0.2.2
+---------------------
+
+* Updated for Django 1.6 compatibility
+* Increased tox coverage
+
+
 Release Notes - 0.2.1
 ---------------------
 
