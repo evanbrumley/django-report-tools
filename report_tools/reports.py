@@ -1,9 +1,20 @@
 from copy import deepcopy
+from collections import OrderedDict
 
 from django.db import models
-from django.utils.datastructures import SortedDict
-from django.utils.encoding import StrAndUnicode
 from django.utils.safestring import mark_safe
+from django.utils.encoding import force_text
+from django.utils.encoding import python_2_unicode_compatible
+
+try:
+    from django.utils.encoding import StrAndUnicode
+except ImportError:
+    from django.utils.encoding import python_2_unicode_compatible
+
+    @python_2_unicode_compatible
+    class StrAndUnicode(object):
+        def __str__(self):
+            return self.CodeType
 
 from .charts import Chart
 
@@ -43,7 +54,7 @@ def get_declared_charts(bases, attrs, with_base_charts=True):
             if hasattr(base, 'declared_charts'):
                 charts = base.declared_charts.items() + charts
     
-    return SortedDict(charts)
+    return OrderedDict(charts)
 
 
 class DeclarativeChartsMetaclass(type):
